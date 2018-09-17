@@ -1,0 +1,39 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>Lessapi</title>
+     <style>
+       #heading {
+            -webkit-user-select: none;
+            position: absolute;
+            top: 50%;
+            margin-top: -150px;
+            text-align: center;
+            width: 100%;
+      }
+      #logo {
+        margin-bottom: 0;
+      }
+      #logo {
+            font: 150px 'Italiana', sans-serif;
+            text-transform: lowercase;
+      }
+      h1 {
+            margin-top: 0;
+            font-size: 2em;
+      }
+      #tagline {
+          font-size: 16px;
+      }
+     </style>
+ </head>
+ <body>
+    <div id="heading">
+      <h1 id="logo"><{$data.title}></h1>
+      <div id="tagline"> <{$data.describe}></div>
+    </div>
+ </body>
+ </html>

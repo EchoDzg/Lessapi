@@ -1,0 +1,16 @@
+{
+    "name" : "Lessapi",
+    "description": "PHP Framework",
+    "type": "Framework",
+    "keywords": [
+        "PHP","PHP Framework","API"
+    ],
+    "require": {
+        "php":">= 5.5.0",
+        "filp/whoops" : "*",
+        "symfony/var-dumper":"*",
+        "catfan/medoo":"^1.5.7",
+        "smarty/smarty": "^3.1",
+        "vlucas/valitron": "^1.4"
+    }
+}
