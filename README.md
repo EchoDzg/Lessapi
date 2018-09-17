@@ -1,8 +1,9 @@
-<h1>Lessapi</h1>
+------
+
+ 精简,高效的 PHP API开发框架 (简单业务简单实现，复杂业务自由实现)
 
 ------
- 精简,高效的 PHP API开发框架 (简单业务简单实现，复杂业务自由实现)
-------
+
 
 <h3>效果演示</h3>
 
@@ -23,7 +24,7 @@
         "summary": "内容",
         "price": "99.00元",
         "rate": "9.3",
-        "tags": "JavaScript 2175,Web前端开发 991,前端开发 609,前端 462,javascript 461,编程 409,Web开发 370,计算机 361",
+        "tags": "JavaScript 2175,Web前端开发 991,前端开发 609,前端 462,javascript 461,编程 409",
         "author": "[美] Nicholas C. Zakas",
         "count": "1"
     }
