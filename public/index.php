@@ -10,7 +10,7 @@
 | Author: 听听风  <907226763@qq.com>
 |
 */
- 
+
 date_default_timezone_set('Asia/Shanghai');
 // 定义根目录,可更改此目录
  define( 'PROJECT_PATH',realpath('../' )); 
@@ -25,14 +25,13 @@ date_default_timezone_set('Asia/Shanghai');
 //  引入composer
  include PROJECT_PATH."/vendor/autoload.php";
 
- // 调试模式开关
+ // 调试模式开关(开启调试模式则不会记录错误日志,及错误异常邮件通知,详细参考配置文件)
  define( 'DEBUG',true);
 
 include CORE.'/common/function.php';
 
 include CORE.'/Lessapi.php';
-
+ 
 spl_autoload_register('\core\Lessapi::load');
 
 \core\Lessapi::run();
- 

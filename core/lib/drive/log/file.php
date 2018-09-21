@@ -21,8 +21,8 @@ class file
             if(!is_dir($this->path.date('Ymd'))) {
                 mkdir($this->path.date('Ymd'),'0777',true);
             }
-            
             file_put_contents($this->path.date('Ymd').'/'.$file.'.log',date('Y-m-d H:i:s').' '.json_encode($msg).PHP_EOL,FILE_APPEND);
         }
+      
     }
 }

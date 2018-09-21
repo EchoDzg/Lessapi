@@ -24,5 +24,11 @@ class PDOdemoModel extends pdodb
         return $res;
     }
 
+    public function first($id)
+    {
+        $sql = "select * from {$this->table} where id=$id";
+        $res = $this->query($sql)->fetchAll();
+        return $res;
+    }
    
 }

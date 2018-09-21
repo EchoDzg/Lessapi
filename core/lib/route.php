@@ -17,9 +17,9 @@ class route
     public $action;
 
     public function __construct(){
-       
+      
         $url = str_replace(array('?','=','&'),'/',$_SERVER['REQUEST_URI']);
-     
+        
         if(isset($url) && $url != '/') {
             $path = $url;
             $patharr = explode('/',trim($path,'/'));    

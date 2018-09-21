@@ -10,6 +10,7 @@ namespace core;
 | Author: 听听风  <907226763@qq.com>
 |
 */
+use core\lib\conf;
 class Lessapi
 {
     public static $classMap = array();
@@ -22,15 +23,22 @@ class Lessapi
      */
     static public function run()
     {
+        $start = microtime(true);
         ini_set('always_populate_raw_post_data',1);
-        
         if(DEBUG) {
             $whoops = new \Whoops\Run;
             $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
             $whoops->register();
             ini_set('display_errors','on');
         } else {
-            ini_set('display_errors','off');
+            error_reporting(0);
+            
+            if(conf::get('SWITCH','log')){ //错误日志配置
+                // error_log("Oh no! We are out of FOOs!", 1, "907226763@qq.com");
+                register_shutdown_function(array('\core\lib\errortoexception','deadly_error'));//处理致命错误
+                set_error_handler(array('\core\lib\errortoexception','ordinary_error'));//处理普通报错
+                set_exception_handler(array('\core\lib\errortoexception','myException'));//用户定义的异常处理函数(未捕获的)
+            }
         }
 
         \core\lib\log::init();
@@ -38,14 +46,19 @@ class Lessapi
         $route = new \core\lib\route();
         $ctrlClass = $route->Controller;
         $action = $route->action;
-        $ControllerFile = APP.'/Controllers/'.$ctrlClass.'Controller.php';
       
+        $ControllerFile = APP.'/Controllers/'.$ctrlClass.'Controller.php';
+         
         $ControllerClass =  '\\'. MODULE . '\Controllers\\' . $ctrlClass.'Controller';
+         
         if(is_file($ControllerFile)) {
             include $ControllerFile;
             $ctrl  =  new $ControllerClass();
             $ctrl->$action();
-            \core\lib\log::log('Controller:'.$ctrlClass.'  '.'action:'.$action);
+            $end = microtime(true);
+            $Expenses = $end-$start;
+            $memory = 'Now memory_get_usage: ' . (memory_get_usage()/1024) .'kb';
+            \core\lib\log::log('Controller:'.$ctrlClass.'  '.'action:'.$action."  time: {$Expenses}"." {$memory}",'expenses');
         } else {
             throw new \Exception('找不到控制器'.$ctrlClass);
         }
@@ -60,9 +73,11 @@ class Lessapi
         } else {
             $class = str_replace('\\','/',$class);
             $file = PROJECT_PATH.'/'.$class.'.php';
+           
             if (is_file($file)) {
                 include $file;
                 self::$classMap[$class] = $class;
+                 
             }   else{
                 return false;
             }

@@ -50,8 +50,10 @@ class  indexController extends BaseController
      */
     public function MedooModel(){
         $model  = new MedoodemoModel;
-        $res = $model->lists();
-        dump($res);
+        
+            $res = $model->lists();
+            dump($res);
+     
     }
 
     /**
@@ -61,7 +63,9 @@ class  indexController extends BaseController
      */
     public function PDOModel(){
         $model  = new PDOdemoModel;
-        $res = $model->lists();
+        $id = request('id');// 不传参数，则返回全部
+       
+        $res = $model->first($id);
         dump($res);
     }
 
