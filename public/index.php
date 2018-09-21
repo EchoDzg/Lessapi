@@ -26,7 +26,7 @@ date_default_timezone_set('Asia/Shanghai');
  include PROJECT_PATH."/vendor/autoload.php";
 
  // 调试模式开关(开启调试模式则不会记录错误日志,及错误异常邮件通知,详细参考配置文件)
- define( 'DEBUG',true);
+ define( 'DEBUG',false);
 
 include CORE.'/common/function.php';
 

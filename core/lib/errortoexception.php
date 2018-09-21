@@ -1,5 +1,6 @@
 <?php namespace core\lib;
 use core\lib\conf;
+use core\lib\ThrowableError;
 /**
  *  自定义错误异常通知类
  * Class ErrorToException
@@ -132,9 +133,13 @@ EOF;
     }
 
     //自定义异常
-    public  static function myException($error){
+    public  static function myException($e){
         //开启内存缓冲
         ob_start();
+        if (!$e instanceof \Exception) {
+            $error = new ThrowableError($e);
+        }
+       
         $time = date('Y-m-d H:i:s');
         $errnoMsg=<<<EOF
 
