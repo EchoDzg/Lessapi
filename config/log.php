@@ -11,8 +11,9 @@ return array(
     //如果开启了调试模式,则不会产生错误日志和邮件通知
     
     'EXCEPTION' => array(//异常，错误处理
-        'NOTICE_TYPE'  => 3, //  通知类型  3： 日志形式(默认类型) 1： 邮件(采用error_log发送邮件,必须安装sendmail) 
-        'EMAIL' => '907226763@qq.com' //通知邮箱地址
+        'NOTICE_TYPE'  => 3, //  通知类型  3： 日志形式(默认类型) 1： 邮件(采用error_log发送邮件,必须安装sendmail) 0:操作系统日志
+        'EMAIL' => '907226763@qq.com', //通知邮箱地址
+        'SYSTEM_LOG' => 'syslog' //默认
     ),
 );
  
